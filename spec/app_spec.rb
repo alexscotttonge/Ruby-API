@@ -9,6 +9,11 @@ describe App do
     end
   end
 
-end
+  describe 'most_sold' do
+    it 'returns the most sold item' do
+      client = App.new
+      expect(client.most_sold).to eq ["Enormous Leather Bottle", 19]
+    end
+  end
 
-# Add simple cov gem
+end
