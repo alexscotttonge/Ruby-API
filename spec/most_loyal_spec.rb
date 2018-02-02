@@ -9,10 +9,10 @@ describe MostLoyal do
     end
   end
 
-  describe '#print users' do
-    it 'prints users' do
+  describe '#most_loyal' do
+    it 'prints the most loyal customer' do
       ml = MostLoyal.new
-      expect { ml.print_users }.to output("bogisich_judah@hilperttromp.biz\n").to_stdout
+      expect { ml.most_loyal }.to output("bogisich_judah@hilperttromp.biz\n").to_stdout
     end
   end
 

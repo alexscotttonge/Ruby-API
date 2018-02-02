@@ -13,7 +13,7 @@ class MostLoyal
     # thanks to @theTinMan on Stackoverflow for this method
   end
 
-  def print_users
+  def most_loyal
     total_users.each do |user|
       if user['id'] == MOST_LOYAL_ID
         puts user['email']

@@ -1,4 +1,5 @@
 require './lib/most_sold'
+require './lib/most_loyal'
 require 'rest-client'
 require 'json'
 
@@ -9,6 +10,9 @@ class API
     when command == 'most_sold'
       ms = MostSold.new
       puts ms.most_sold
+    when command == 'most_loyal'
+      ml = MostLoyal.new
+      ml.most_loyal
     end
   end
 
