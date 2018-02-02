@@ -3,6 +3,7 @@ class MostSold
     def most_sold
       number_of_entries = parse_most_sold_items['data']
       number_of_entries.each_with_object(Hash.new(0)) { |order, hash| hash[order['item']] += 1 }.max_by { |k, v| v }
+      # thanks to @theTinMan on Stackoverflow for this method
     end
 
     private
@@ -17,6 +18,5 @@ class MostSold
       response = RestClient.get(url)
       data = JSON.parse(response)
     end
-
 
 end

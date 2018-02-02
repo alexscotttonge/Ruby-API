@@ -1,21 +1,21 @@
-require 'rest-client'
-require 'json'
-
 class MostLoyal
 
-  def number_of_entries
-    number_of_entries = parse_most_loyal['data']
+  def total_purchases
+    number_of_entries = parse_total_purchases['data']
+  end
+
+  def total_users
+    number_of_entries = parse_users['data']
   end
 
   def mode_user_id
-    number_of_entries.each_with_object(Hash.new(0)) { |order, hash| hash[order['user_id']] += 1 }.max_by { |k, v| v }
+    total_purchases.each_with_object(Hash.new(0)) { |order, hash| hash[order['user_id']] += 1 }.max_by { |k, v| v }
+    # thanks to @theTinMan on Stackoverflow for this method
   end
 
   def print_users
-    purchase_id = "NW0H-Q6RH-5L31-4ZHU"
-    number_of_entries = parse_users['data']
-    number_of_entries.each do |user|
-      if user['id'] == purchase_id
+    total_users.each do |user|
+      if user['id'] == MOST_LOYAL_ID
       puts user['email']
       end
     end
@@ -23,7 +23,7 @@ class MostLoyal
 
   private
 
-  def parse_most_loyal
+  def parse_total_purchases
     url = purchase_url
     response = RestClient.get(url)
     data = JSON.parse(response)
@@ -44,5 +44,7 @@ class MostLoyal
     url_extension = "https://driftrock-dev-test-2.herokuapp.com/users?per_page=10001&page=1"
     # total users = 10001
   end
+
+  MOST_LOYAL_ID = "NW0H-Q6RH-5L31-4ZHU"
 
 end
