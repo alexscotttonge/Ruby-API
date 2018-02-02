@@ -1,7 +1,14 @@
 require 'rest-client'
 require 'json'
 
-class App
+class API
+
+  def run(command)
+    case
+    when command == 'most_sold'
+      puts most_sold
+    end
+  end
 
   def api_request
     url = 'https://driftrock-dev-test-2.herokuapp.com'
