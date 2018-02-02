@@ -10,9 +10,26 @@ Create a script that can be run from the command line and can answer the questio
 ruby app.rb COMMAND PARAMETERS
 ```
 
-
-The script should implement these commands:
-- total_spend [EMAIL]: What is the total spend of the user with this email address [EMAIL]?
-- average_spend [EMAIL]: What is the average spend of the user with this email address [EMAIL]?
+The script implements the following commands:
 - most_loyal: What is the email address of the most loyal user (most purchases)? highest_value:
 - What is the email address of the highest value user? most_sold: What is the name of the most sold item?
+- Further commands: total_spend [EMAIL], average_spend [EMAIL], highest_value
+
+## Approach
+- In the time I had available I focused on clean code and extracting classes to reduce dependencies with clear method names and responsibilities
+- Further work is needed to reduce hard-coded values for some of the specs and using stubs for the API tests
+
+## Example output
+- ```$ ruby app.rb most_loyal```
+- ```$ bogisich_judah@hilperttromp.biz```
+
+## Test Coverage
+- 93%
+
+## Testing
+Install ```rspec```
+
+```gem install rspec```
+
+Then run tests:
+```$ rspec```
